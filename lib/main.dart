@@ -1,57 +1,36 @@
+//here i show five types of page animations in flutter
+// SlideAnimation
+// FadeAnimation
+// ScaleAnimation
+// SizeAnimation
+// RotationAnimation
+
 import 'package:flutter/material.dart';
-import 'RotationAnimation.dart';
-import 'fadeAnimation.dart';
-import 'scaleAnimation.dart';
-import 'sizeAnimation.dart';
-import 'slideAnimation.dart';
+import 'package:flutter_page_animations/animations/RotationAnimation.dart';
+import 'package:flutter_page_animations/animations/fadeAnimation.dart';
+import 'package:flutter_page_animations/animations/scaleAnimation.dart';
+import 'package:flutter_page_animations/animations/sizeAnimation.dart';
+import 'package:flutter_page_animations/animations/slideAnimation.dart';
+import 'package:flutter_page_animations/widget.dart';
 
+void main() => runApp(MaterialApp(title: "Animation Widget",home: MyApp(),));
 
-var animationTypeList = [
-  SlideAnimation.routeName,
-  FadeAnimation.routeName,
-  ScaleAnimation.routeName,
-  SizeAnimation.routeName,
-  RotationAnimation.routeName
-];
-main() {
-  runApp(MaterialApp(
-  
-    routes: {
-      SlideAnimation.routeName: (context) => SlideAnimation(),
-      FadeAnimation.routeName: (context) => FadeAnimation(),
-      ScaleAnimation.routeName: (context) => ScaleAnimation(),
-      SizeAnimation.routeName: (context) => SizeAnimation(),
-      RotationAnimation.routeName: (context) => RotationAnimation()
-    },
-    theme: ThemeData.dark(),
-    home: SafeArea(
-      child: Scaffold(
-        appBar: AppBar(title: Text("Page Transaction")),
-        body: ListView.builder(
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Card(
-                child: ListTile(
-                  onTap: () {
-                    Navigator.of(context).pushNamed(animationTypeList[index]);
-                  },
-                  leading: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    child: Text("${index + 1}"),
-                  ),
-                  title: Text(animationTypeList[index].toString()),
-                ),
-              ),
-            );
-          },
-          itemCount: animationTypeList.length,
-        ),
-      ),
-    ),
-  ));
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+          appBar: AppBar(
+            title: Text('Page Animation List'),
+          ),
+          body: Column(
+            children: [
+             NavigateTile("Slide Animations",SlideAnimation()),
+             NavigateTile("Fade Animations",FadeAnimation()),
+             NavigateTile("Scale Animations",ScaleAnimation()),
+             NavigateTile("Size Animations",SizeAnimation()),
+             NavigateTile("Rotation Animations",RotationAnimation()),
+            ],
+          )
+    );
+  }
 }
-
-
-
-

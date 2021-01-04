@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'list.dart';
 
-import 'logo.dart';
-import 'main.dart';
+import '../list.dart';
+import '../logo.dart';
 
 class RotationAnimation extends StatelessWidget {
   static const routeName = 'Rotation_Animation';
